@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from routes import files
+from routes import background
 from services.posts import get_posts
 from routes import posts
 from db.database import init_db
@@ -15,6 +16,7 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 app.include_router(posts.router)
 app.include_router(files.router)
+app.include_router(background.router)
 
 POSTS_PER_PAGE = 5
 
