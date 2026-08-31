@@ -1,16 +1,42 @@
-<h1>{{ post.title }}</h1>
+<html>
+<head>
+    <title>DA COOLEST NOTES</title>
+    <style>
+        /* .content {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
 
-<p>{{ post.created }}</p>
+        } */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: url('/backgrounds/image/guy-arguing.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color:beige;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    
+    <p>{{ post.created }}</p>
+    
+    <div class="content">
+    {{ content | safe }}
+    </div>
 
-<div>
-{{ content | safe }}
-</div>
+    <p>
+    Tags:
+    {% for tag in tags %}
+    <a href="/posts/tag/{{ tag }}">{{ tag }}</a>
+    {% endfor %}
+    </p>
 
-<p>
-Tags:
-{% for tag in tags %}
-<a href="/posts/tag/{{ tag }}">{{ tag }}</a>
-{% endfor %}
-</p>
-
-<a href="/">Back</a>
+    <a href="/">Back</a>
+</body>
+</html>
